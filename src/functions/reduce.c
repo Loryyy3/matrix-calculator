@@ -14,5 +14,5 @@ void reduce(double ***M, int **dimM) {
     copyPaste(M, c, d, dimM);
   }
 
-  reducefunction(M[ind(d)], m, n);
+  gauss_reduction(M[ind(d)], m, n);
 }

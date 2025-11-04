@@ -14,7 +14,7 @@ void determinant(double ***M, int **dimM) {
   }
 
   copyPaste(M, c, '[', dimM);
-  reducefunction(M[ind('[')], m, n);
+  gauss_reduction(M[ind('[')], m, n);
 
   double det = 1;
   for (int i = 0; i < m; ++i) {

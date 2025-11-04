@@ -14,6 +14,7 @@ OBJ_DIR = build
 # Source files
 SRCS = $(SRC_DIR)/main.c \
 	$(UTILS_DIR)/memoryError.c \
+	$(UTILS_DIR)/clear.c \
 	$(UTILS_DIR)/obtainChar.c \
 	$(UTILS_DIR)/ind.c \
 	$(UTILS_DIR)/isNotValid.c \
@@ -22,7 +23,7 @@ SRCS = $(SRC_DIR)/main.c \
 	$(UTILS_DIR)/isZero.c \
 	$(UTILS_DIR)/swap.c \
 	$(UTILS_DIR)/copyPaste.c \
-	$(UTILS_DIR)/reducefunction.c \
+	$(UTILS_DIR)/gauss_reduction.c \
 	$(CORE_DIR)/enterCalculator.c \
 	$(CORE_DIR)/help.c \
 	$(CORE_DIR)/exitCalculator.c \

@@ -39,10 +39,14 @@ int main(void) {
   while ( 1 ) {
     printf("('h' for manual) choose an action: ");
     scanf(" %c", &choice);
+    clear();
 
     switch ( choice ) {
       case 'h':
         help();
+        break;
+      case 'c':
+        clear();
         break;
       case 'q':
         exitCalculator(M, dimM);
