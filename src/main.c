@@ -26,7 +26,7 @@ int main(void) {
     memoryError();
   }
   for (int i = 0; i < NUM_MATRICES + 1; ++i) {
-    dimM[i] = malloc(2 * sizeof(int));
+    dimM[i] = calloc(2, sizeof(int));
     if ( dimM[i] == NULL ) {
       memoryError();
     }
@@ -39,7 +39,6 @@ int main(void) {
   while ( 1 ) {
     printf("('h' for manual) choose an action: ");
     scanf(" %c", &choice);
-    clear();
 
     switch ( choice ) {
       case 'h':
@@ -64,10 +63,10 @@ int main(void) {
         initializeRandom(M, dimM, m, n);
         break;
       case 'r':
-        // readFromFile();
+        readFromFile(M, dimM);
         break;
       case 'w':
-        // writeToFile();
+        writeToFile(M, dimM);
         break; 
       case 'p':
         print(M, dimM);

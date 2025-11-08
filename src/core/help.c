@@ -1,6 +1,7 @@
 #include "utils.h"
 
 void help(void) {
+    clear();
     // Borders in bold blue
     printf("\033[1;34m+-------------------------+--------------------------------------------+\033[0m\n");
     // Header row: commands green, description yellow

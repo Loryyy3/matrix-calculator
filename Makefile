@@ -1,6 +1,6 @@
 # Compiler
 CC = gcc
-CFLAGS = -Wall -Wextra -std=c11 -Iinclude
+CFLAGS = -Wall -Wextra -std=c11 -Iinclude -g
 
 # Source directories
 SRC_DIR = src
@@ -30,6 +30,8 @@ SRCS = $(SRC_DIR)/main.c \
 	$(FUNC_DIR)/save.c \
 	$(FUNC_DIR)/initialize.c \
 	$(FUNC_DIR)/initializeRandom.c \
+	$(FUNC_DIR)/readFromFile.c \
+	$(FUNC_DIR)/writeToFile.c \
 	$(FUNC_DIR)/print.c \
 	$(FUNC_DIR)/checkSym.c \
 	$(FUNC_DIR)/transpose.c \
