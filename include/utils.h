@@ -24,6 +24,8 @@ void swap(double *p1, double *p2);
 void copyPaste(double ***M, char c, char d, int **dimM);
 
 // for gauss algorithm
+void reduceLine(double **M, int l, double A, int r, double a, int start_index, int n);
+void swapLines(double **M, int line1, int line2);
 void gauss_reduction(double **M, int m, int n);
 
 #endif

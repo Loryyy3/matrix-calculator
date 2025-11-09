@@ -1,8 +1,12 @@
 #include "utils.h"
 #include "functions.h"
 
+// for mkdir command
+#include <sys/stat.h>
+#include <sys/types.h>
+
 void fwriteToFile(double **M, const char *filename, int rows, int cols) {
-  system("mkdir -p matrices");
+  mkdir("matrices", 0777);
   FILE *file = fopen(filename, "w");
   if ( !file ) {
     printf("Error opening file!\n");
@@ -39,7 +43,7 @@ void writeToFile(double ***M, int **dimM) {
   dimM[ind(c)][0] = m;
   dimM[ind(c)][1] = n;
 
-  char filename[15] = "matrices/";
+  char filename[32];
   sprintf(filename, "matrices/%c.txt", c);
 
   fwriteToFile(M[ind(c)], filename, m, n);

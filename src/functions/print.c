@@ -9,7 +9,7 @@ void print(double ***M, int **dimM) {
 
   for (int i = 0; i < m; ++i) {
     for (int j = 0; j < n; ++j) {
-      printf("%.2lf\t", M[ind(c)][i][j]);
+      printf("%.3lf\t", M[ind(c)][i][j]);
     }
     printf("\n");
   }

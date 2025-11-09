@@ -1,76 +1,56 @@
 #include "utils.h"
 
-void obtainPivots(double **M, double **pivots, int m, int n) {
-  for (int i = 0; i < m; ++i) {
-    for (int j = 0; j < n; ++j) {
-      if ( M[i][j] != 0 ) {
-        pivots[i][0] = M[i][j];
-        pivots[i][1] = j;
-        break;
-      }
-      pivots[i][1] = -1;
-    }
+void reduceLine(double **M, int l, double a, int r, double A, int start_index, int n) {
+  /*
+   * l : a b c d e f ...
+   * r : A B C D E F ...
+   * r -> r - A / a * l
+   */
+  for (int j = start_index; j < n; ++j) {
+    printf("M[%d][%d] -= %lf / %lf * %lf\n", r + 1, j + 1, A, a, M[l][j]);
+    M[r][j] -= A / a * M[l][j];
   }
 }
 
-
-
-void reduceLine(double **M, double **pivots, int l, int r, int n) {
-            /*
-             * l : a b c d e f ...
-             * r : A B C D E F ...
-             * r -> r - A / a * l
-             */
-            double a = pivots[l][0];
-            double A = pivots[r][0];
-            short unsigned int pivotNonOttenuto = 1;
-            double value;
-
-            int first_piv_position = (int) pivots[r][1];
-            M[r][first_piv_position] = 0;
-            for (int j = first_piv_position + 1; j < n; ++j) {
-              value = M[r][j] - A / a * M[l][j];
-              M[r][j] = value;
-              if ( !isZero(value) && pivotNonOttenuto ) {
-                pivots[r][0] = value;
-                pivots[r][1] = j;
-                pivotNonOttenuto = 0;
-              }
-            }
-            if ( pivotNonOttenuto ) {
-              pivots[r][1] = -1;
-            }
+void swapLines(double **M, int line1, int line2) {
+  printf("swapping line %d with %d\n", line1 + 1, line2 + 1);
+  double *tempLine = M[line1];
+  M[line1] = M[line2];
+  M[line2] = tempLine;
 }
-
-
 
 void gauss_reduction(double **M, int m, int n) {
-  double **pivots = malloc(m * sizeof(double *));
-  if ( pivots == NULL ) {
-    memoryError();
-  }
-  for (int i = 0; i < n; ++i) {
-    pivots[i] = malloc(2 * sizeof(double));
-    if ( pivots[i] == NULL) {
-      for (int k = 0; k < i; ++k) {
-        free(pivots[k]);
-      }
-      memoryError();
-    }
-  }
-
-  obtainPivots(M, pivots, m, n);
-
-  for (int j = 0; j < n - 1; ++j) {
-    for (int l = 0; l < m; ++l) {
-      if ( pivots[l][1] == j ) {
-        for (int r = 0; r < m; ++r) {
-          if ( r != l && pivots[r][1] == pivots[l][1] ) {
-            reduceLine(M, pivots, l, r, n);
-          }
-        }
+  double a, A;
+  int count_lines = 0;
+  for (int j = 0; j < n - 1 && count_lines < m; ++j) {
+    int pivot_row = -1;
+    for (int l = count_lines; l < m; ++l) {
+      if ( !isZero(M[l][j]) ) {
+        pivot_row = l;
+        break;
       }
     }
-  }
 
+    if ( pivot_row == -1 ) {
+      continue;
+    }
+
+    if ( pivot_row != count_lines ) {
+      swapLines(M, pivot_row, count_lines);
+    }
+
+    a = M[count_lines][j];
+
+    for (int r = 0; r < m; ++r) {
+      if ( r == count_lines ) {
+        continue;
+      }
+      if ( !isZero(M[r][j]) ) {
+        A = M[r][j];
+        reduceLine(M, count_lines, a, r, A, j, n);
+      }
+    }
+    
+    ++count_lines;
+  }
 }

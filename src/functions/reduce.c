@@ -1,7 +1,7 @@
 #include "utils.h"
 
 void reduce(double ***M, int **dimM) {
-  printf("riduce ");
+  printf("reduce ");
   char c = obtainChar();
 
   printf("save in ");
