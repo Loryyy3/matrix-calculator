@@ -2,15 +2,15 @@
 
 void reduce(double ***M, int **dimM) {
   printf("reduce ");
-  char c = obtainChar();
+  char c = obtainChar(M, dimM);
 
   printf("save in ");
-  char d = obtainChar();
+  char d = obtainChar(M, dimM);
 
   int m = dimM[ind(c)][0];
   int n = dimM[ind(c)][1];
 
-  if ( d != c ) {
+  if (d != c) {
     copyPaste(M, c, d, dimM);
   }
 

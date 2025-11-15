@@ -1,0 +1,15 @@
+# to make clangd recognize the path to headers file use one of the following two
+
+# CompileFlags:
+#   Add: [
+#     "-Iinclude",
+#     "-I."
+#   ]
+
+CompileFlags:
+  Add: [
+    "-I../../include",
+    "-I../..",
+    "-I../include",
+    "-I.."
+  ]

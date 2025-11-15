@@ -1,17 +1,15 @@
 #include "utils.h"
 
-void obtainDim(int *pm, int *pn) {
+void obtainDim(int *pm, int *pn, double ***M, int **dimM) {
   int m, n;
   do {
-    printf("#rows m: ");
-    scanf("%d", &m);
-  }
-  while ( isNotValidDim(m) );
+    get_value("#rows m: ", "%d", &m, M, dimM);
+  } while (isNotValidDim(m));
+
   do {
-    printf("#columns n: ");
-    scanf("%d", &n);
-  }
-  while ( isNotValidDim(n) );
+    get_value("#cols n: ", "%d", &n, M, dimM);
+  } while (isNotValidDim(n));
+
   *pm = m;
   *pn = n;
 }

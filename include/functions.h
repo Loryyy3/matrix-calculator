@@ -1,7 +1,6 @@
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
 
-// functionalities declarations
 void fsave(double ***M, char c, int m, int n);
 void save(double ***M, int **dimM, int m, int n);
 void initialize(double ***M, int **dimM, int m, int n);
@@ -10,7 +9,6 @@ void freadFromFile(double ***M, const char *filename, int **dimM);
 void readFromFile(double ***M, int **dimM);
 void fwriteToFile(double **M, const char *filename, int rows, int cols);
 void writeToFile(double ***M, int **dimM);
-
 
 void print(double ***M, int **dimM);
 void checkSym(double ***M, int **dimM);

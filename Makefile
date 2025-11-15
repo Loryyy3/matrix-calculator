@@ -16,6 +16,7 @@ SRCS = $(SRC_DIR)/main.c \
 	$(UTILS_DIR)/memoryError.c \
 	$(UTILS_DIR)/clear.c \
 	$(UTILS_DIR)/obtainChar.c \
+	$(UTILS_DIR)/get_value.c \
 	$(UTILS_DIR)/ind.c \
 	$(UTILS_DIR)/isNotValid.c \
 	$(UTILS_DIR)/isNotValidDim.c \

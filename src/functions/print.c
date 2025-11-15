@@ -2,7 +2,7 @@
 
 void print(double ***M, int **dimM) {
   printf("print ");
-  char c = obtainChar();
+  char c = obtainChar(M, dimM);
 
   int m = dimM[ind(c)][0];
   int n = dimM[ind(c)][1];

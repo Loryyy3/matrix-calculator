@@ -2,7 +2,7 @@
 
 void findMaxColumn(double ***M, int **dimM) {
   printf("max sum column ");
-  char c = obtainChar();
+  char c = obtainChar(M, dimM);
 
   int m = dimM[ind(c)][0];
   int n = dimM[ind(c)][1];
@@ -18,7 +18,7 @@ void findMaxColumn(double ***M, int **dimM) {
     for (int i = 0; i < m; ++i) {
       sum += M[ind(c)][i][j];
     }
-    if ( sum > max ) {
+    if (sum > max) {
       max = sum;
       maxposition = j;
     }

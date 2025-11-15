@@ -4,9 +4,9 @@ void multiply(double ***M, int **dimM) {
   printf("Insert M1 * M2:\n");
 
   printf("M1 ");
-  char c1 = obtainChar();
+  char c1 = obtainChar(M, dimM);
   printf("M2 ");
-  char c2 = obtainChar();
+  char c2 = obtainChar(M, dimM);
   
   int m1 = dimM[ind(c1)][0];
   int n1 = dimM[ind(c1)][1];
@@ -14,16 +14,16 @@ void multiply(double ***M, int **dimM) {
   int m2 = dimM[ind(c2)][0];
   int n2 = dimM[ind(c2)][1];
 
-  if ( n1 != m2 ) {
+  if (n1 != m2) {
     printf("Matrices must be of compatible dimensions!\n");
     printf("dim %c = %d x %d, dim %c = %d x %d\n", c1, m1, n1, c2, m2, n2);
     return;
   }
 
   printf("save in ");
-  char c = obtainChar();
+  char c = obtainChar(M, dimM);
 
-  if ( c == c1 || c == c2 ) {
+  if (c == c1 || c == c2) {
     printf("Please choose a different matrix!\n");
     return;
   }

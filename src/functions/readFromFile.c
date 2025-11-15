@@ -2,13 +2,13 @@
 
 void freadFromFile(double ***M, const char *filename, int **dimM) {
   FILE *file = fopen(filename, "r");
-  if ( !file ) {
+  if (!file) {
     printf("Error opening file!\n");
     return;
   }
 
   int rows, cols;
-  if ( fscanf(file, "%d %d", &rows, &cols) != 2 ) {
+  if (fscanf(file, "%d %d", &rows, &cols) != 2) {
     printf("Empty file %s!\n", filename);
     fclose(file);
     return;
@@ -21,7 +21,7 @@ void freadFromFile(double ***M, const char *filename, int **dimM) {
 
   for (int i = 0; i < rows; ++i) {
     for (int j = 0; j < cols; ++j) {
-      if ( fscanf(file, "%lf", &M[ind(c)][i][j]) != 1 ) {
+      if (fscanf(file, "%lf", &M[ind(c)][i][j]) != 1) {
         printf("Error reading element [%d][%d] in '%s'\n", i + 1, j + 1, filename);
         fclose(file);
         return;
@@ -35,7 +35,7 @@ void freadFromFile(double ***M, const char *filename, int **dimM) {
 
 void readFromFile(double ***M, int **dimM) {
   printf("read ");
-  char c = obtainChar();
+  char c = obtainChar(M, dimM);
 
   char filename[32];
   sprintf(filename, "matrices/%c.txt", c);

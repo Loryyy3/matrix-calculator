@@ -2,12 +2,12 @@
 
 void determinant(double ***M, int **dimM) {
   printf("det ");
-  char c = obtainChar();
+  char c = obtainChar(M, dimM);
 
   int m = dimM[ind(c)][0];
   int n = dimM[ind(c)][1];
 
-  if ( m != n ) {
+  if (m != n) {
     printf("You need to choose a square matrix!\n");
     printf("dim %c = %d x %d\n", c, m, n);
     return;

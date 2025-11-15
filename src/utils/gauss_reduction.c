@@ -7,7 +7,6 @@ void reduceLine(double **M, int l, double a, int r, double A, int start_index, i
    * r -> r - A / a * l
    */
   for (int j = start_index; j < n; ++j) {
-    printf("M[%d][%d] -= %lf / %lf * %lf\n", r + 1, j + 1, A, a, M[l][j]);
     M[r][j] -= A / a * M[l][j];
   }
 }
@@ -20,33 +19,25 @@ void swapLines(double **M, int line1, int line2) {
 }
 
 void gauss_reduction(double **M, int m, int n) {
-  double a, A;
   int count_lines = 0;
   for (int j = 0; j < n - 1 && count_lines < m; ++j) {
     int pivot_row = -1;
     for (int l = count_lines; l < m; ++l) {
-      if ( !isZero(M[l][j]) ) {
+      if (!isZero(M[l][j])) {
         pivot_row = l;
         break;
       }
     }
 
-    if ( pivot_row == -1 ) {
-      continue;
-    }
+    if (pivot_row == -1) continue;
+    if (pivot_row != count_lines) swapLines(M, pivot_row, count_lines);
 
-    if ( pivot_row != count_lines ) {
-      swapLines(M, pivot_row, count_lines);
-    }
-
-    a = M[count_lines][j];
-
+    double a = M[count_lines][j];
     for (int r = 0; r < m; ++r) {
-      if ( r == count_lines ) {
-        continue;
-      }
-      if ( !isZero(M[r][j]) ) {
-        A = M[r][j];
+      if (r == count_lines) continue;
+
+      if (!isZero(M[r][j])) {
+        double A = M[r][j];
         reduceLine(M, count_lines, a, r, A, j, n);
       }
     }

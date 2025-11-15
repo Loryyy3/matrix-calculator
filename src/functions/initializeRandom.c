@@ -3,7 +3,7 @@
 
 void initializeRandom(double ***M, int **dimM, int m, int n) {
   printf("random initialize ");
-  char c = obtainChar();
+  char c = obtainChar(M, dimM);
 
   dimM[ind(c)][0] = m;
   dimM[ind(c)][1] = n;
@@ -12,8 +12,8 @@ void initializeRandom(double ***M, int **dimM, int m, int n) {
   do {
     printf("Random range max: ");
     scanf("%d", &max);
-  }
-  while ( max < 1 );
+  } while (max < 1);
+
   srand(time(NULL));
   for (int i = 0; i < m; ++i) {
     for (int j = 0; j < n; ++j) {

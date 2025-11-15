@@ -2,12 +2,12 @@
 
 void duplicate(double ***M, int **dimM) {
   printf("duplicate ");
-  char c = obtainChar();
+  char c = obtainChar(M, dimM);
 
   printf("save in ");
-  char d = obtainChar();
+  char d = obtainChar(M, dimM);
 
-  if ( d == c ) {
+  if (d == c) {
     printf("Please choose a different matrix!\n");
     return;
   }

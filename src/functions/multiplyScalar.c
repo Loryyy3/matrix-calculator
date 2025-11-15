@@ -8,15 +8,15 @@ void multiplyScalar(double ***M, int **dimM) {
   scanf("%lf", &k);
 
   printf("M ");
-  char c = obtainChar();
+  char c = obtainChar(M, dimM);
 
   printf("save in ");
-  char d = obtainChar();
+  char d = obtainChar(M, dimM);
 
   int m = dimM[ind(c)][0];
   int n = dimM[ind(c)][1];
 
-  if ( d != c ) {
+  if (d != c) {
     dimM[ind(d)][0] = m;
     dimM[ind(d)][1] = n;
   }

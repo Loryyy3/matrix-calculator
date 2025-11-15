@@ -2,7 +2,7 @@
 
 void initialize(double ***M, int **dimM, int m, int n) {
   printf("initialize ");
-  char c = obtainChar();
+  char c = obtainChar(M, dimM);
 
   dimM[ind(c)][0] = m;
   dimM[ind(c)][1] = n;

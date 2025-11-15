@@ -8,7 +8,7 @@
 void fwriteToFile(double **M, const char *filename, int rows, int cols) {
   mkdir("matrices", 0777);
   FILE *file = fopen(filename, "w");
-  if ( !file ) {
+  if (!file) {
     printf("Error opening file!\n");
     return;
   }
@@ -30,14 +30,14 @@ void fwriteToFile(double **M, const char *filename, int rows, int cols) {
 
 void writeToFile(double ***M, int **dimM) {
   printf("write ");
-  char c = obtainChar();
+  char c = obtainChar(M, dimM);
 
   int m = dimM[ind(c)][0];
   int n = dimM[ind(c)][1];
 
-  if ( m == 0 || n == 0 ) {
+  if (m == 0 || n == 0) {
     printf("Matrix %c does not exist!\n", c);
-    obtainDim(&m, &n);
+    obtainDim(&m, &n, M, dimM);
     fsave(M, c, m, n);
   }
   dimM[ind(c)][0] = m;
