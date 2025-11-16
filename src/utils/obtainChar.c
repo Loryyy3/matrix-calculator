@@ -6,9 +6,7 @@ char obtainChar(double ***M, int **dimM) {
   do {
     char prompt[16];
     snprintf(prompt, sizeof(prompt), "(%c-%c): ", FIRST_M, LAST_M);
-    if (!get_value(prompt, " %c", &c, M, dimM)) {
-      exit(0);
-    }
+    get_value(prompt, " %c", &c, M, dimM);
   } while (isNotValid(c));
 
   return c;

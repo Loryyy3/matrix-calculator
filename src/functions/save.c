@@ -7,9 +7,7 @@ void fsave(double ***M, int **dimM, char c, int m, int n) {
       char prompt[32];
       snprintf(prompt, sizeof(prompt), "(%d, %d): ", i + 1, j + 1);
 
-      if (!get_value(prompt, "%lf", &M[ind(c)][i][j], M, dimM)) {
-        return;
-      }
+      get_value(prompt, "%lf", &M[ind(c)][i][j], M, dimM);
     }
     printf("\n");
   }

@@ -16,7 +16,7 @@ void memoryError(void);
 void clear(void);
 
 char obtainChar(double ***M, int **dimM);
-bool get_value(const char *prompt, const char *fmt, void *value, double ***M, int **dimM);
+void get_value(const char *prompt, const char *fmt, void *value, double ***M, int **dimM);
 
 int ind(char c);
 int isNotValid(char c);
